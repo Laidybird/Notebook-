@@ -6,7 +6,7 @@ function deleteNote(noteId) {
       window.location.href = "/";
     });
   }
-  
+//event litener function 
 function submitForm() {
   document.querySelector('form').submit();
   }
