@@ -1,21 +1,41 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
-    %}
-    <h1 align="center" class="text-info">Notes</h1>
-    <ul class="list-group list-group-flush" id="notes">
-      {% for note in user.notes %}
-      <li class="list-group-item">
-        {{ note.data }}
-        <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </li>
-      {% endfor %}
-    </ul>
-    <form method="POST">
-      <textarea name="note" id="note" class="form-control"></textarea>
-      <br />
-      <div align="center">
-        <button type="submit" class="btn btn-primary" ontouchend="submitForm()">Add Note</button>
-      </div>
-    </form>
-    {% endblock %}
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block styles %}
+<style>
+  #notes li {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+
+  .note {
+    background-color: #f0f0f0;
+  }
+
+  .delete-button {
+    color: red;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 align="center" class="text-info">Notes</h1>
+<ul class="list-group list-group-flush" id="notes">
+  {% for note in user.notes %}
+  <li class="list-group-item note">
+    {{ note.data }}
+    <button type="button" class="close delete-button" onClick="deleteNote({{ note.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+<form method="POST">
+  <textarea name="note" id="note" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary" ontouchend="submitForm()">Add Note</button>
+  </div>
+</form>
+{% endblock %}
