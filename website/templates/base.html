@@ -39,11 +39,6 @@
         </div>
       </div>
     </nav>
-    <div class="container">
-      {% for category in categories %}
-        <div class="card">
-          <a href="{{ url_for('notes', category_id=category.id) }}">{{ category.name }}</a>
-        </div>
       {% endfor %}
     </div>
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
